@@ -13,7 +13,7 @@ global_equation = "x1 + x2 + x3"
 
 def init_global_equation():
     headers = {}
-    aio_url = "API"
+    aio_url = "https://io.adafruit.com/api/v2/HTQ/feeds/equation"
     x = requests.get(url=aio_url, headers=headers, verify=False)
     data = x.json()
     global_equation = data["last_value"]
@@ -28,8 +28,8 @@ def modify_value(x1, x2, x3):
 
 def connected(client):
     print("Server connected ...")
-    client.subscribe("button 1")
-    client.subscribe("button 2")
+    client.subscribe("Button 1")
+    client.subscribe("Button 2")
     client.subscribe("equation")
 
 
@@ -51,7 +51,7 @@ def message(client, feed_id, payload):
 
 client = MQTTClient(AIO_USERNAME, AIO_KEY)
 
-client.on_connect = connected  # callback
+client.on_connect = connected
 client.on_disconnect = disconnected
 client.on_message = message
 client.on_subscribe = subscribe
