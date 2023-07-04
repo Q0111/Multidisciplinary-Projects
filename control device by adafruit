@@ -54,10 +54,15 @@ def sendCommand(cmd):
 
 mess = ""
 def processData(data):
+    print(data)
     data = data.replace("!", "")
     data = data.replace("#", "")
     splitData = data.split(":")
     print(splitData)
+    if splitData[1] == "T":
+        client.publish("sensor1", splitData[2])
+    elif splitData[1] == "H":
+        client.publish("sensor2", splitData[2])
 
 def readSerial():
     bytesToRead = ser.inWaiting()
@@ -98,5 +103,4 @@ while True:
 
 
     pass
-
 
