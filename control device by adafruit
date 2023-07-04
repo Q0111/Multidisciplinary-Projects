@@ -9,7 +9,7 @@ from Adafruit_IO import MQTTClient
 import requests
 
 AIO_USERNAME = "HTQ"
-AIO_KEY = "aio_gEBw89g02AK4aYsy0MWG1dfadyvP"
+AIO_KEY = ""
 
 global_equation = "x1 + x2 + x3"
 
