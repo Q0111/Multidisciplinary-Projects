@@ -1,24 +1,24 @@
-
-body{
+body {
     margin: 0;
 }
 
-#Welcome{
-    color: black;
+#Welcome {
+    color: lightblue;
     text-align: center;
     margin-top: 80px;
     margin-bottom: 30px;
+    font-size: 50px;
 }
 
-.all button{
+.all button {
     text-align: center;
     margin: 0 auto;
 }
 
-#daily_waste_tracking{
+#daily_waste_tracking {
     padding: 60px 40px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #35A29F;
+    color: white;
     border: 3px blue;
     margin-top: 2%;
     margin-left: 25%;
@@ -26,14 +26,14 @@ body{
     width: 50%;
     border-radius: 12px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 30px;
     text-align: center;
 }
 
-#weekly_waste_tracking{
+#weekly_waste_tracking {
     padding: 60px 40px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #35A29F;
+    color: white ;
     border: 3px blue;
     margin-top: 2%;
     margin-left: 25%;
@@ -41,11 +41,11 @@ body{
     width: 50%;
     border-radius: 12px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 30px;
     text-align: center;
 }
 
-#chat_bot{
+#chat_bot {
     display: inline-block;
     padding: 10px 20px;
     background-color: #007bff;
@@ -60,6 +60,3 @@ body{
     font-size: 16px;
     text-align: center;
 }
-
-
-

@@ -3,11 +3,13 @@ body {
 }
 
 h1 {
-    color: black;
+    color: lightblue;
     text-align: center;
+    font-size: 50px;
 }
 
 canvas {
+    background-color: white;
     display: inline-block;
     box-sizing: border-box; 
     width: 150px;
@@ -29,7 +31,7 @@ canvas {
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
-    background-color: red; /* Set a background color */
+    background-color: rgb(24, 152, 128); /* Set a background color */
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 15px; /* Some padding */

@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
         labels: ['Organic', 'Paper', 'Glass', 'Metal', 'Plastic'],
         datasets: [{
             label: "Total Quantity",
-            data: [10, 20, 15, 25, 30],
-            backgroundColor: ['red', 'blue', 'green', 'yellow', 'purple']
+            data: [10, 20, 15, 25, 90],
+            backgroundColor: ['orange', 'red', 'blue', 'green', 'yellow']
         }]
     };
 
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         labels: ['Organic', 'Paper', 'Glass', 'Metal', 'Plastic'],
         datasets: [{
             data: [25, 30, 15, 10, 20],
-            backgroundColor: ['red', 'blue', 'green', 'yellow', 'purple']
+            backgroundColor: ['orange', 'red', 'blue', 'green', 'yellow']
         }]
     };
 

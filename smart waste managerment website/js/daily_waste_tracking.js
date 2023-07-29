@@ -13,7 +13,7 @@ function drawGraph1() {
         label: 'Total Quantity',
         data: y1Data,
         borderColor: 'rgb(75, 192, 192)',
-        borderWidth: 2,
+        borderWidth: 3,
         fill: false,
       }]
     },
@@ -51,7 +51,7 @@ function drawGraph2() {
         label: 'Organic waste',
         data: y2Data,
         borderColor: 'rgb(75, 192, 192)',
-        borderWidth: 2,
+        borderWidth: 3,
         fill: false,
       }]
     },
@@ -89,7 +89,7 @@ function drawGraph3() {
         label: 'Paper Waste',
         data: y3Data,
         borderColor: 'rgb(75, 192, 192)',
-        borderWidth: 2,
+        borderWidth: 3,
         fill: false,
       }]
     },
@@ -127,7 +127,7 @@ function drawGraph4() {
         label: 'Glass Waste',
         data: y4Data,
         borderColor: 'rgb(75, 192, 192)',
-        borderWidth: 2,
+        borderWidth: 3,
         fill: false,
       }]
     },
@@ -165,7 +165,7 @@ function drawGraph5() {
         label: 'Metal waste',
         data: y5Data,
         borderColor: 'rgb(75, 192, 192)',
-        borderWidth: 2,
+        borderWidth: 3,
         fill: false,
       }]
     },
@@ -203,7 +203,7 @@ function drawGraph6() {
         label: 'Plastic Waste',
         data: y6Data,
         borderColor: 'rgb(75, 192, 192)',
-        borderWidth: 2,
+        borderWidth: 3,
         fill: false,
       }]
     },

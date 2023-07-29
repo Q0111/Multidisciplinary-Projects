@@ -4,8 +4,9 @@ body {
 }
 
 h1 {
-    color: black;
+    color: lightblue;
     text-align: center;
+    font-size: 50px;
 }
 
 .charts-container {
@@ -27,12 +28,12 @@ h1 {
 }
 
 .bar-chart {
-    background-color: #f0f0f0;
+    background-color: whitesmoke;
     padding: 10px;
 }
 
 .pie-chart {
-    background-color: #f9f9f9;
+    background-color: whitesmoke;
     padding: 10px;
 }
 
