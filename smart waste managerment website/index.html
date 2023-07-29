@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+
+<head>
+  <title>Project Homepage</title>
+  <link href="css/index.css" rel="stylesheet" media="screen,print" />
+  <link href="css/chat_bot.css" rel="stylesheet" media="screen,print" />
+</head>
+
+<body>
+  <h1 id="Welcome"><b>WASTE MANAGERMENT SYSTEM</b></h1>
+
+  <div class="all button">
+    <div><button id="daily_waste_tracking" onclick="window.location.href = 'daily_waste_tracking.html';">Daily Waste Tracking</button></div>
+    <div><button id="weekly_waste_tracking" onclick="window.location.href = 'weekly_waste_tracking.html';">Weekly Waste Tracking</button></div>
+  </div>
+
+  <div class="chat-box">
+    <div class="chat-header">FAQs Chat</div>
+    <div class="chat-messages">
+      <div class="chat-message bot-message">Hi there! I am a bot.</div>
+    </div>
+    <textarea class="chat-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)"></textarea>
+
+  <!-- Include the Rasa chatbot script -->
+  <script src="js/rasa-chatbot-script.js"></script>
+  <script src="js\chat_box.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+}
+
+.charts-container {
+    display: flex;
+    justify-content: center; /* Canh giữa các cặp biểu đồ */
+    flex-wrap: wrap;
+}
+
+.chart-pair {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    max-width: 50%; /* Chiếm không quá nửa chiều rộng của trang */
+}
+
+.bar-chart, .pie-chart {
+    margin-right: 10px;
+    flex: 1;
+}
+
+.bar-chart {
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.pie-chart {
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+

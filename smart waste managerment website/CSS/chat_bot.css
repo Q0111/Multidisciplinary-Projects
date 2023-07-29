@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+}
+
+#chat-container {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#user-message {
+    outline: none;
+    color: black;
+    font-size: 16px;
+    text-align: left;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid purple;
+}
+
+#send-button {
+    display: inline-block;
+    background-color: purple;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 15px 32px;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#send-button:hover {
+    background-color: #58257b
+}
+
+#send-button:active {
+    background-color: #58257b;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+
+
+/* Styling for the chat box container */
+.chat-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    max-height: 500px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Styling for the chat header */
+.chat-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* Styling for the chat messages container */
+.chat-messages {
+    padding: 10px;
+    overflow-y: scroll;
+    max-height: 400px;
+}
+
+/* Styling for individual chat messages */
+.chat-message {
+    background-color: #e5e5ea;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+/* Styling for user's messages */
+.user-message {
+    background-color: #DCF8C6;
+    align-self: flex-end;
+}
+
+/* Styling for bot's messages */
+.bot-message {
+    background-color: #FFFFFF;
+}
+
+/* Styling for the chat input box */
+.chat-input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-top: 1px solid #ccc;
+    outline: none;
+    resize: none;
+}
