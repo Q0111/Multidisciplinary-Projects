@@ -6,7 +6,7 @@ from Adafruit_IO import MQTTClient
 
 conn_str = (
     r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
-    r'DBQ=path;' # Path to database
+    r'DBQ=path' # Path to database
 )
 conn = pyodbc.connect(conn_str)
 
@@ -37,7 +37,7 @@ def message(client, feed_id, payload):
         print(f"Received data from feed {feed_id}: {payload}")
         trash_class = payload.rstrip()
         cursor = conn.cursor()
-        today = datetime.now().date()
+        today = datetime.date.today()
         
         # Check if there's already an entry for the current date
         cursor.execute("SELECT * FROM Waste_Tracking WHERE EntryDate = ?", today)
@@ -66,7 +66,6 @@ def message(client, feed_id, payload):
         trash_sendback = " ".join(f"{trash_type} {quantity}" for trash_type, quantity in zip(trash_types, quantities))
         # Publish the trash types and their quantities to the "daily_tracking" feed
         client.publish("daily_tracking", trash_sendback)
-    cursor.close()
 
 def publish_weekly_data(cursor, client, current_week_id, feed_id, waste_type):
     # Fetch the values for the week
@@ -95,7 +94,7 @@ def main():
 
     while True:
         cursor = conn.cursor()
-
+        
         # Check and call calculate_weekly if a new week has started (WeekID 1 -> 2)
         current_week_id = get_last_week_id(cursor)
         if current_week_id > last_processed_week:
@@ -113,10 +112,7 @@ def main():
         # Calculate the time remaining until end of current week
         now = datetime.datetime.now()
         end_of_week = now + datetime.timedelta(days=(6 - now.weekday()))
-
-        # Calculate the time remaining until end of week
         time_remaining = (end_of_week - now).total_seconds()
-
         # Sleep until the end of the current week
         time.sleep(time_remaining)
     
