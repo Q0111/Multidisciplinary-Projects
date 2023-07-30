@@ -75,11 +75,9 @@ def calculate_daily():
     total_quantity = 0
     for i in range(2, 7):
         total_quantity += waste_data[i]
-        print("total_quantity: ", total_quantity)
     cursor.execute("UPDATE Waste_Tracking SET TotalQuantity = ? WHERE EntryDate = ?", total_quantity, today)
 
-    # Calculate fill level
-    fill_level = "Test"
+  
     # Check if record from daily_bin_tracking table exists
     cursor.execute("SELECT * FROM Daily_Bin_Tracking WHERE EntryDate = ?", today)
     data_today = cursor.fetchone()
@@ -87,14 +85,14 @@ def calculate_daily():
         # Update the data in Daily_Bin_Tracking table
         sql_update_data = f"""
             UPDATE Daily_Bin_Tracking
-            SET TotalQuantity = ?, FillLevel = ?
+            SET TotalQuantity = ?
             WHERE EntryDate = ?
         """
-        cursor.execute(sql_update_data, total_quantity, fill_level, today)
+        cursor.execute(sql_update_data, total_quantity, today)
     else:
         insert_query = f"""
-        INSERT INTO Daily_Bin_Tracking (EntryDate, TotalQuantity, FillLevel)
-        VALUES (?, ?, ?)
+        INSERT INTO Daily_Bin_Tracking (EntryDate, TotalQuantity)
+        VALUES (?, ?)
     """
-        cursor.execute(insert_query, today, total_quantity, fill_level)
+        cursor.execute(insert_query, today, total_quantity)
     conn.commit()
