@@ -15,7 +15,7 @@ def get_last_week_id(cursor):
     return last_week_id or 0
 
 
-def calculate_weekly_statistics():
+def calculate_weekly():
     cursor = conn.cursor()
     waste_types = ["Organic", "Paper", "Glass", "Metal", "Plastic"]
     # GEt the first entry date in Waste_Tracking table
@@ -38,7 +38,6 @@ def calculate_weekly_statistics():
     # Fetch all unique week IDs
     cursor.execute("SELECT DISTINCT WeekID FROM Waste_Tracking")
     week_ids = [row[0] for row in cursor.fetchall()]
-    print("week_ids: ", week_ids)
 
     # Calculate statistics for each week
     for week_id in week_ids:
@@ -52,61 +51,50 @@ def calculate_weekly_statistics():
                 mean_value = statistics.mean(quantities)
                 means.append(mean_value)
 
-            medians = []
-            for i in range(2, len(weekly_data[0])):
-                quantities = [data[i] for data in weekly_data]
-                median_value = statistics.median(quantities)
-                medians.append(median_value)
-
-            std_devs = []
-            for i in range(2, len(weekly_data[0])):
-                quantities = [data[i] for data in weekly_data]
-                std_dev_value = statistics.pstdev(quantities)
-                std_devs.append(std_dev_value)
             query = """
-            INSERT INTO Weekly_Tracking (
-                WeekID, Mean_Organic, Mean_Paper, Mean_Glass, Mean_Metal, Mean_Plastic, Mean_Total,
-                Median_Organic, Median_Paper, Median_Glass, Median_Metal, Median_Plastic, Median_Total,
-                STD_Organic, STD_Paper, STD_Glass, STD_Metal, STD_Plastic, STD_Total
-            )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """
-        cursor.execute(query, week_id, *means, *medians, *std_devs)
+                INSERT INTO Weekly_Tracking (
+                    WeekID, Mean_Organic, Mean_Paper, Mean_Glass, Mean_Metal, Mean_Plastic, Mean_Total
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            """
+        cursor.execute(query, week_id, *means)
     conn.commit()
 
 
-def calculate_daily_bin_tracking():
+def calculate_daily():
     cursor = conn.cursor()
     waste_types = ["Organic", "Paper", "Glass", "Metal", "Plastic"]
 
-    # Get the EntryDate for yesterday
-    yesterday = datetime.now() - timedelta(days=1)
-    yesterday_date = yesterday.EntryDate()
+    # Get the EntryDate for current date
+    today = datetime.now().date()
 
-    # Fetch data for yesterday
-    cursor.execute("SELECT * FROM Daily_Bin_Tracking WHERE EntryDate = ?", yesterday_date)
-    daily_data = cursor.fetchone()
+    # Fetch data from Daily_Bin_Tracking for current date
+    cursor.execute("SELECT * FROM Waste_Tracking WHERE EntryDate = ?", today)
+    waste_data = cursor.fetchone()
 
-    if daily_data:
-        # Calculate total quantity for yesterday
-        total_quantity = sum(daily_data[i] for i in range(1, len(daily_data)))
+    total_quantity = 0
+    for i in range(2, 7):
+        total_quantity += waste_data[i]
+        print("total_quantity: ", total_quantity)
+    cursor.execute("UPDATE Waste_Tracking SET TotalQuantity = ? WHERE EntryDate = ?", total_quantity, today)
 
-        # Calculate fill level
-        fill_level = 0 # check sau
-        # Insert the data into Daily_Bin_Tracking
-        sql_insert_data = f"""
-            INSERT INTO Daily_Bin_Tracking (EntryDate, TotalQuantity, FillLevel, {', '.join(waste_types)})
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+    # Calculate fill level
+    fill_level = "Test"
+    # Check if record from daily_bin_tracking table exists
+    cursor.execute("SELECT * FROM Daily_Bin_Tracking WHERE EntryDate = ?", today)
+    data_today = cursor.fetchone()
+    if(data_today):
+        # Update the data in Daily_Bin_Tracking table
+        sql_update_data = f"""
+            UPDATE Daily_Bin_Tracking
+            SET TotalQuantity = ?, FillLevel = ?
+            WHERE EntryDate = ?
         """
-        cursor.execute(sql_insert_data, yesterday_date, total_quantity, fill_level, *daily_data[1:])
-
-        conn.commit()
-
-
-def main():
-    calculate_weekly_statistics()
-    calculate_daily_bin_tracking()
-
-
-if __name__ == "__main__":
-    main()
+        cursor.execute(sql_update_data, total_quantity, fill_level, today)
+    else:
+        insert_query = f"""
+        INSERT INTO Daily_Bin_Tracking (EntryDate, TotalQuantity, FillLevel)
+        VALUES (?, ?, ?)
+    """
+        cursor.execute(insert_query, today, total_quantity, fill_level)
+    conn.commit()
