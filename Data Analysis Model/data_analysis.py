@@ -96,4 +96,3 @@ def calculate_daily():
     """
         cursor.execute(insert_query, today, total_quantity)
     conn.commit()
-    s
