@@ -1,0 +1,6 @@
+0 Organic
+1 Metal
+2 Glass
+3 Paper
+4 Plastic
+5 Background
