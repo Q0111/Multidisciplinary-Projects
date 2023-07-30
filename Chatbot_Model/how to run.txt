@@ -2,5 +2,6 @@ How to run Rasa chatbot module in the website
 1. Open VSC
 2. Open the folder of chatbot
 3. Open the terminal
-4. Run this code in the terminal: rasa run --enable-api --cors="*"
-5. Go to the homepage website and chat with chatbot
+4. Run this code in the terminal to save the model: rasa train 
+5. Run this code in the terminal: rasa run --enable-api --cors="*"
+6. Go to the homepage website and chat with chatbot
