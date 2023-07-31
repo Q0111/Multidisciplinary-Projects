@@ -12,7 +12,7 @@ camera = cv2.VideoCapture(0)
 threshold = 85
 
 # Set the Adafruit procedure
-client = MQTTClient("Group_X","aio_ozFx52KI3zsAiNaDsnr25ThoymPU")
+client = MQTTClient("---","---")
 client.connect()
 client.subscribe("ai_camera")
 
