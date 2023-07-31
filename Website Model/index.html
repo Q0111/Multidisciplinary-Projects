@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Project Homepage</title>
+  <link href="css/index.css" rel="stylesheet" media="screen,print" />
+  <link href="css/chat_bot.css" rel="stylesheet" media="screen,print" />
+  <style>
+    body {
+      background-image: url('Moonlit_Asteroid.jpg');
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 id="Welcome"><b>WASTE MANAGEMENT SYSTEM</b></h1>
+
+  <div class="all button">
+    <div><button id="daily_waste_tracking" onclick="window.location.href = 'daily_waste_tracking.html';"><strong>Daily Waste Tracking</strong></button></div>
+    <div><button id="weekly_waste_tracking" onclick="window.location.href = 'weekly_waste_tracking.html';"><strong>Weekly Waste Tracking</strong></button></div>
+  </div>
+
+  <div class="chat-box">
+    <div class="chat-header">FAQs Chat</div>
+    <div class="chat-messages">
+      <div class="chat-message bot-message">Hi user! Our chatbot is in the process of development. Sometimes, our chatbot cannot give you a desired response. You can ask chatbot about our system, types of trash and how to treat them.</div>
+    </div>
+    <textarea class="chat-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)"></textarea>
+  </div>
+
+  <!-- Include the Rasa chatbot script -->
+
+  <script src="js/chat_box.js"></script>
+
+</body>
+
+</html>
