@@ -18,7 +18,6 @@ An intelligent IoT solution that automates waste classification, tracking, and a
 - [Installation Guide](#installation-guide)
 - [Configuration](#configuration)
 - [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
 - [Usage Guide](#usage-guide)
 - [Troubleshooting](#troubleshooting)
 
@@ -151,7 +150,7 @@ pip install opencv-python tensorflow keras adafruit-io pyodbc pillow
    - `Daily_Bin_Tracking` - daily aggregated data
    - `Weekly_Tracking` - weekly summaries
 
-3. Note the full path to your database file (e.g., `C:\Path\To\WasteManagement.accdb`)
+3. Note the full path to your database file (e.g., `WasteManagement.accdb`)
 
 
 ---
@@ -318,7 +317,6 @@ Click the chatbot icon on the homepage to:
 - Ensure the camera and MQTT listener are running
 
 ### Model Accuracy Issues
-- Clean the camera lens
 - Ensure adequate lighting on the waste item
 - The model is trained for 5 categories; unrecognized items may show low confidence
 - For improved accuracy, retrain the model with additional data using Teachable Machine
@@ -331,3 +329,4 @@ Click the chatbot icon on the homepage to:
 **Course:** Multi-Discipline Project  
 **Semester:** Year 1  
 **Institution:** Vietnamese-German University (VGU)
+
